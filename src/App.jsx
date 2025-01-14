@@ -1,12 +1,23 @@
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemProvider } from './providers/ThemeContext';
+import GlobalStyle from './GlobalStyle';
+import Header from './components/Header/Header';
+import Main from './app/main/Main';
 
 function App() {
-
   return (
-    <>
-      <h1>그리디 미션 : 뉴스 웹 뷰어 시이작!</h1>
-    </>
-  )
+    <BrowserRouter>
+      <GlobalStyle />
+      <ThemProvider>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Main />}></Route>
+          </Routes>
+        </main>
+      </ThemProvider>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
