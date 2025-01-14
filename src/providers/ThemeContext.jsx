@@ -1,12 +1,21 @@
 import { createContext, useState } from 'react';
+import { lightTheme, darkTheme } from '../theme/theme';
 
 const ThemeContext = createContext();
 
-const ThemProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
+const ThemeProvider = ({ children }) => {
+  const initTheme =
+    localStorage.getItem('theme') === 'dark' ? darkTheme : lightTheme;
+  const [theme, setTheme] = useState(initTheme ? initTheme : null);
 
   const toggleDarkmode = () => {
-    setTheme(!theme);
+    const newTheme = theme === lightTheme ? darkTheme : lightTheme;
+
+    setTheme((prevTheme) =>
+      prevTheme === lightTheme ? darkTheme : lightTheme
+    );
+
+    localStorage.setItem('theme', newTheme === lightTheme ? 'light' : 'dark');
   };
 
   return (
@@ -16,4 +25,4 @@ const ThemProvider = ({ children }) => {
   );
 };
 
-export { ThemProvider, ThemeContext };
+export { ThemeProvider, ThemeContext };

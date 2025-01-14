@@ -6,7 +6,7 @@ const NewsItems = ({ NewsData }) => {
     <NewsItemsContainer>
       <h3>Business</h3>
       {NewsData.map((news) => {
-        return <NewsCard news={news} />;
+        return <NewsCard key={news.source.name} news={news} />;
       })}
     </NewsItemsContainer>
   );

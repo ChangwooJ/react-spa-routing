@@ -6,16 +6,23 @@ export const NewsHeaderContainer = styled.div`
   gap: 1rem;
 
   h3 {
-    text-decoration: none;
-    color: black;
-    display: inline-block;
-
     &:hover {
-      color: #0284c7;
+      color: ${({ theme }) => theme.primary};
     }
   }
 
   p {
-    color: #4b5563;
+    display: flex;
+    height: 50px;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow: hidden;
+
+    color: ${({ theme }) => theme.secondary};
+  }
+
+  span {
+    color: ${({ theme }) => theme.secondary};
+    font-size: 0.8rem;
   }
 `;

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { HeaderContainer } from './Header.styles';
 import ThemeButton from '../Button/ThemeButton';
+import useDarkmode from '../../hooks/useDarkmode';
 
 const HEADER_ITEMS = [
   'All',
@@ -14,11 +15,13 @@ const HEADER_ITEMS = [
 ];
 
 const Header = () => {
+  const { theme } = useDarkmode();
+
   return (
-    <HeaderContainer>
+    <HeaderContainer theme={theme}>
       {HEADER_ITEMS.map((item) => {
         return (
-          <Link>
+          <Link key={item}>
             <h3>{item}</h3>
           </Link>
         );

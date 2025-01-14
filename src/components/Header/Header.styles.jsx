@@ -9,13 +9,9 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
 
   a {
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
-
     &:hover {
-      color: #0284c7;
-      border-bottom: 0.2rem solid #0284c7;
+      color: ${({ theme }) => theme.primary};
+      border-bottom: 0.2rem solid ${({ theme }) => theme.primary};
     }
   }
 `;

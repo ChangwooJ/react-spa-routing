@@ -1,12 +1,18 @@
 import { StyledButton } from './ThemeButton.styles';
+import useDarkmode from '../../hooks/useDarkmode';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 
 const ThemeButton = () => {
-  const isDarkMode = false;
+  const { theme, toggleDarkmode } = useDarkmode();
+
   return (
-    <StyledButton>
-      {isDarkMode ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />}
+    <StyledButton theme={theme} onClick={toggleDarkmode}>
+      {theme.type === 'darkTheme' ? (
+        <LightModeOutlinedIcon />
+      ) : (
+        <DarkModeOutlinedIcon />
+      )}
     </StyledButton>
   );
 };
