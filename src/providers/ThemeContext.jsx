@@ -9,13 +9,11 @@ const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(initTheme ? initTheme : null);
 
   const toggleDarkmode = () => {
-    const newTheme = theme === lightTheme ? darkTheme : lightTheme;
+    const saveTheme = theme === lightTheme ? darkTheme : lightTheme;
 
-    setTheme((prevTheme) =>
-      prevTheme === lightTheme ? darkTheme : lightTheme
-    );
+    setTheme(saveTheme);
 
-    localStorage.setItem('theme', newTheme === lightTheme ? 'light' : 'dark');
+    localStorage.setItem('theme', saveTheme === lightTheme ? 'light' : 'dark');
   };
 
   return (
