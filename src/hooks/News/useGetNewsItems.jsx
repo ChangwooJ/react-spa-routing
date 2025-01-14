@@ -31,7 +31,9 @@ const useGetNewsItems = () => {
       }
     };
 
-    getNewsItems();
+    if (category !== 'all') {
+      getNewsItems();
+    }
   }, [category]);
 
   const refetch = () => {

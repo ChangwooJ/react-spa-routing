@@ -1,12 +1,24 @@
 import NewsCard from '../NewsCard/NewsCard';
 import { NewsItemsContainer } from './NewsItmes.styled';
+import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 const NewsItems = ({ NewsData }) => {
+  const { category } = useParams();
+
+  const newsCategory = category.charAt(0).toUpperCase() + category.slice(1);
+
   return (
     <NewsItemsContainer>
-      <h3>News</h3>
+      <h3>
+        {category !== 'all' && <span>Top Headline </span>}
+        {newsCategory} News
+      </h3>
       {NewsData.map((news) => {
-        return <NewsCard key={news.source.name} news={news} />;
+        if (news.source.name === '[Removed]') {
+          return;
+        }
+        return <NewsCard key={uuidv4()} news={news} />;
       })}
     </NewsItemsContainer>
   );

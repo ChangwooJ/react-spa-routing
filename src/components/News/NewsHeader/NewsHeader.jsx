@@ -7,11 +7,11 @@ const NewsHeader = ({ newsContent }) => {
 
   return (
     <NewsHeaderContainer theme={theme}>
-      <Link to={newsContent.url}>
-        <h3>{newsContent.title}</h3>
+      <Link to={newsContent.url || '#'}>
+        <h3>{newsContent.title || 'No Title'}</h3>
       </Link>
-      <p>{newsContent.description}</p>
-      <span>{newsContent.author}</span>
+      <p>{newsContent.description || 'No Description'}</p>
+      <span>{newsContent.author || 'No Author'}</span>
     </NewsHeaderContainer>
   );
 };

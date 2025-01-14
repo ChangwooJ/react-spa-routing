@@ -4,6 +4,7 @@ import ThemeButton from '../Button/ThemeButton';
 import useDarkmode from '../../hooks/useDarkmode';
 
 const HEADER_ITEMS = [
+  'all',
   'business',
   'enterTainment',
   'general',
