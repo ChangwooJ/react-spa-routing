@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/Header/Header';
 import Main from './app/main/Main';
 import { GlobalStyle } from './theme/GlobalStyles';
 import useDarkmode from './hooks/useDarkmode';
+import Header from './components/Header/Header';
 
 function App() {
   const { theme } = useDarkmode();
@@ -15,7 +15,7 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path="/" element={<Main />}></Route>
+            <Route path="/:category" element={<Main />}></Route>
           </Routes>
         </main>
       </Suspense>

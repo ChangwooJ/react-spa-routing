@@ -9,7 +9,13 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
 
   a {
+    color: ${({ theme }) => theme.text};
     &:hover {
+      color: ${({ theme }) => theme.primary};
+      border-bottom: 0.2rem solid ${({ theme }) => theme.primary};
+    }
+
+    &:focus {
       color: ${({ theme }) => theme.primary};
       border-bottom: 0.2rem solid ${({ theme }) => theme.primary};
     }

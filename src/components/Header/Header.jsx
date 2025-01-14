@@ -4,14 +4,13 @@ import ThemeButton from '../Button/ThemeButton';
 import useDarkmode from '../../hooks/useDarkmode';
 
 const HEADER_ITEMS = [
-  'All',
-  'Business',
-  'EnterTainment',
-  'General',
-  'Health',
-  'Science',
-  'Sports',
-  'Technology',
+  'business',
+  'enterTainment',
+  'general',
+  'health',
+  'science',
+  'sports',
+  'technology',
 ];
 
 const Header = () => {
@@ -21,8 +20,8 @@ const Header = () => {
     <HeaderContainer theme={theme}>
       {HEADER_ITEMS.map((item) => {
         return (
-          <Link key={item}>
-            <h3>{item}</h3>
+          <Link to={`/${item}`} key={item}>
+            <h3 key={item}>{item.charAt(0).toUpperCase() + item.slice(1)}</h3>
           </Link>
         );
       })}
