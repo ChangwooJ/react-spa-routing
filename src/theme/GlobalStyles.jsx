@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   body {
+    transition: color 500ms;
+    transition: background-color 500ms;
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
     position: relative;
