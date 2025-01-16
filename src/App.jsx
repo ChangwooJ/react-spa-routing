@@ -22,6 +22,7 @@ function App() {
         <>
             <GlobalStyle />
             <Header
+                currentCategory={category}
                 onSelectedCategory={handleSelectedCategory}
                 isDarkMode={isDarkMode}
                 onToggleDarkMode={handleToggleDarkMode}
