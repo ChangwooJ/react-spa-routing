@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { categoryList } from "../data/category.js";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -39,17 +40,16 @@ const DarkModeButton = styled.button`
   cursor: pointer;
 `;
 
-const categories = ['All', 'Business', 'Entertainement', 'General', 'Health', 'Science', 'Sports', 'Technoloy'];
-
 const Header = () => {
+
 
     return (
         <HeaderContainer>
             <Title>News</Title>
             <TabContainer>
-                {categories.map((category) => (
-                    <Tab key={category}>
-                        {category}
+                {categoryList.map((category) => (
+                    <Tab key={category.id}>
+                        {category.name}
                     </Tab>
                 ))}
             </TabContainer>
