@@ -42,7 +42,6 @@ const DarkModeButton = styled.button`
 
 const Header = () => {
 
-
     return (
         <HeaderContainer>
             <Title>News</Title>
