@@ -20,8 +20,8 @@ const TabContainer = styled.div`
 `;
 
 const Tab = styled.button`
-    background-color: ${({ active }) => (active ? '#007bff' : 'transparent')};
-    color: ${({ active }) => (active ? '#fff' : 'inherit')};
+    background-color: ${({ 'data-active': active }) => (active ? '#007bff' : 'transparent')};
+    color: ${({ 'data-active': active }) => (active ? '#fff' : 'inherit')};
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
@@ -51,7 +51,7 @@ const Header = ({ currentCategory, onSelectedCategory, isDarkMode, onToggleDarkM
                 {categoryList.map((category) => (
                     <Tab
                         key={category.id}
-                        active={currentCategory === category.name}
+                        data-active={currentCategory === category.name}
                         onClick={() => onSelectedCategory(category.name)}
                     >
                         {category.name}
