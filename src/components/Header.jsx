@@ -40,7 +40,7 @@ const DarkModeButton = styled.button`
   cursor: pointer;
 `;
 
-const Header = () => {
+const Header = ({ isDarkMode, onToggleDarkMode }) => {
 
     return (
         <HeaderContainer>
@@ -52,8 +52,8 @@ const Header = () => {
                     </Tab>
                 ))}
             </TabContainer>
-            <DarkModeButton onClick={() => {}}>
-
+            <DarkModeButton onClick={onToggleDarkMode}>
+                {isDarkMode ? 'Light Mode' : 'Dark Mode'}
             </DarkModeButton>
         </HeaderContainer>
     )

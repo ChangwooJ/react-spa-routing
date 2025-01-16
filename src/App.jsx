@@ -1,13 +1,25 @@
 import Header from "./components/Header.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import GlobalStyle from "./style/GlobalStyle.js";
 
 function App() {
-    const { isDarkMode, setIsDarkMode } = useState(false);
+    const [ isDarkMode, setIsDarkMode ] = useState(false);
 
+    useEffect(() => {
+        document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+    }, [isDarkMode]);
+
+    const handleToggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+    }
 
     return (
         <>
-            <Header></Header>
+            <GlobalStyle />
+            <Header
+                isDarkMode={isDarkMode}
+                onToggleDarkMode={handleToggleDarkMode}
+            ></Header>
         </>
     )
 }
