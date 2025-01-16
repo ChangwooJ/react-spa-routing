@@ -43,7 +43,7 @@ function App() {
             <main>
                 {articles && articles.length > 0 ? (
                     articles.map((article, index) => (
-                        <NewsCard article={article} />
+                        <NewsCard key={index} article={article} />
                     ))
                 ) : (
                     <p>Loading...</p>
