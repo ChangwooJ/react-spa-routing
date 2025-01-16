@@ -2,6 +2,7 @@ import Header from "./components/Header.jsx";
 import {useEffect, useState} from "react";
 import GlobalStyle from "./style/GlobalStyle.js";
 import {fetchNews} from "./utils/fetchNews.js";
+import NewsCard from "./components/NewsCard.jsx";
 
 function App() {
     const [ articles, setArticles ] = useState([]);
@@ -17,7 +18,7 @@ function App() {
     useEffect(() => {
         const getArticles = async () => {
             const data = await fetchNews(API_KEY, category);
-            setArticles(data);
+            setArticles(data.articles);
         };
         getArticles();
     }, [category, API_KEY]);
@@ -38,7 +39,16 @@ function App() {
                 onSelectedCategory={handleSelectedCategory}
                 isDarkMode={isDarkMode}
                 onToggleDarkMode={handleToggleDarkMode}
-            ></Header>
+            />
+            <main>
+                {articles && articles.length > 0 ? (
+                    articles.map((article, index) => (
+                        <NewsCard article={article} />
+                    ))
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </main>
         </>
     )
 }
