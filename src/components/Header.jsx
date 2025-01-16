@@ -42,14 +42,17 @@ const DarkModeButton = styled.button`
     font-size: 11px;
 `;
 
-const Header = ({ isDarkMode, onToggleDarkMode }) => {
+const Header = ({ onSelectedCategory, isDarkMode, onToggleDarkMode }) => {
 
     return (
         <HeaderContainer>
             <Title>News</Title>
             <TabContainer>
                 {categoryList.map((category) => (
-                    <Tab key={category.id}>
+                    <Tab
+                        key={category.id}
+                        onClick={() => onSelectedCategory(category.name)}
+                    >
                         {category.name}
                     </Tab>
                 ))}
