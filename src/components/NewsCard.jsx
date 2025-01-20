@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const CardContainer = styled.div`
+const CardContainer = styled.a`
   display: flex;
   gap: 1rem;
   margin-bottom: 1.5rem;
@@ -43,13 +43,8 @@ const Author = styled.span`
 `;
 
 const NewsCard = ({ article }) => {
-
-    const handleClick = () => {
-        window.open(article.url, '_blank');
-    }
-
     return (
-        <CardContainer onClick={handleClick}>
+        <CardContainer href={article.url}>
             {article.urlToImage && <Thumbnail src={article.urlToImage} alt={article.title} />}
             <Info>
                 <SourceName>{article.source.name}</SourceName>
