@@ -5,8 +5,11 @@ import {fetchNews} from "./utils/fetchNews.js";
 import NewsCard from "./components/NewsCard.jsx";
 import {ThemeProvider} from "styled-components";
 import {theme} from "./style/theme.js";
+import {useNavigate} from "react-router-dom";
 
 function App() {
+    const navigate = useNavigate();
+
     const [ articles, setArticles ] = useState([]);
     const [ category, setCategory ] = useState('All');
     const [ isDarkMode, setIsDarkMode ] = useState(false);
@@ -28,6 +31,7 @@ function App() {
 
     const handleSelectedCategory = (category) => {
         setCategory(category);
+        navigate(`/${category}`);
     }
 
     const handleToggleDarkMode = () => {
@@ -38,21 +42,21 @@ function App() {
         <>
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
-                <Header
-                    currentCategory={category}
-                    onSelectedCategory={handleSelectedCategory}
-                    isDarkMode={isDarkMode}
-                    onToggleDarkMode={handleToggleDarkMode}
-                />
-                <main>
-                    {articles && articles.length > 0 ? (
-                        articles.map((article, index) => (
-                            <NewsCard key={index} article={article} />
-                        ))
-                    ) : (
-                        <p>Loading...</p>
-                    )}
-                </main>
+                    <Header
+                        currentCategory={category}
+                        onSelectedCategory={handleSelectedCategory}
+                        isDarkMode={isDarkMode}
+                        onToggleDarkMode={handleToggleDarkMode}
+                    />
+                    <main>
+                        {articles && articles.length > 0 ? (
+                            articles.map((article, index) => (
+                                <NewsCard key={index} article={article} />
+                            ))
+                        ) : (
+                            <p>Loading...</p>
+                        )}
+                    </main>
             </ThemeProvider>
         </>
     )
