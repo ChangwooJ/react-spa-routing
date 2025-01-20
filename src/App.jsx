@@ -20,7 +20,8 @@ function App() {
     useEffect(() => {
         const getArticles = async () => {
             const data = await fetchNews(API_KEY, category);
-            setArticles(data.articles);
+            const articles = data.articles.filter(article => (article.title !== "[Removed]"));
+            setArticles(articles);
         };
         getArticles();
     }, [category, API_KEY]);
