@@ -6,5 +6,5 @@ export const categoryList = [
     { id : 'c5', name: 'Health' },
     { id : 'c6', name: 'Science' },
     { id : 'c7', name: 'Sports' },
-    { id : 'c8', name: 'Technoloy' },
+    { id : 'c8', name: 'Technology' },
 ];
