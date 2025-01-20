@@ -49,7 +49,7 @@ const NewsCard = ({ article }) => {
             <Info>
                 <SourceName>{article.source.name}</SourceName>
                 <NewsTitle>{article.title}</NewsTitle>
-                {<Author>{article.author ? `by ${article.author}` : 'No author'}</Author>}
+                <Author>{article.author ? `by ${article.author}` : 'No author'}</Author>
             </Info>
         </CardContainer>
     )
