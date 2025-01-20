@@ -5,16 +5,22 @@ import {fetchNews} from "./utils/fetchNews.js";
 import NewsCard from "./components/NewsCard.jsx";
 import {ThemeProvider} from "styled-components";
 import {theme} from "./style/theme.js";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 function App() {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [ articles, setArticles ] = useState([]);
     const [ category, setCategory ] = useState('All');
     const [ isDarkMode, setIsDarkMode ] = useState(false);
 
     const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+
+    useEffect(() => {
+        const pathCategory = location.pathname.slice(1) || "All";
+        setCategory(pathCategory);
+    }, [location]);
 
     useEffect(() => {
         document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
