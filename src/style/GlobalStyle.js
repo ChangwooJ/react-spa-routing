@@ -8,13 +8,13 @@ const GlobalStyle = createGlobalStyle`
     }
     
     body[data-theme='light'] {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: ${({ theme }) => theme.color.WHITE};
+        color: ${({ theme }) => theme.color.BLACK};
     }
 
     body[data-theme='dark'] {
-        background-color: #121212;
-        color: #ffffff;
+        background-color: ${({ theme }) => theme.color.DARK};
+        color: ${({ theme }) => theme.color.WHITE};
     }
     
     body {

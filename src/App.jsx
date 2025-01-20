@@ -3,6 +3,8 @@ import {useEffect, useState} from "react";
 import GlobalStyle from "./style/GlobalStyle.js";
 import {fetchNews} from "./utils/fetchNews.js";
 import NewsCard from "./components/NewsCard.jsx";
+import {ThemeProvider} from "styled-components";
+import {theme} from "./style/theme.js";
 
 function App() {
     const [ articles, setArticles ] = useState([]);
@@ -33,22 +35,24 @@ function App() {
 
     return (
         <>
-            <GlobalStyle />
-            <Header
-                currentCategory={category}
-                onSelectedCategory={handleSelectedCategory}
-                isDarkMode={isDarkMode}
-                onToggleDarkMode={handleToggleDarkMode}
-            />
-            <main>
-                {articles && articles.length > 0 ? (
-                    articles.map((article, index) => (
-                        <NewsCard key={index} article={article} />
-                    ))
-                ) : (
-                    <p>Loading...</p>
-                )}
-            </main>
+            <ThemeProvider theme={theme}>
+                <GlobalStyle />
+                <Header
+                    currentCategory={category}
+                    onSelectedCategory={handleSelectedCategory}
+                    isDarkMode={isDarkMode}
+                    onToggleDarkMode={handleToggleDarkMode}
+                />
+                <main>
+                    {articles && articles.length > 0 ? (
+                        articles.map((article, index) => (
+                            <NewsCard key={index} article={article} />
+                        ))
+                    ) : (
+                        <p>Loading...</p>
+                    )}
+                </main>
+            </ThemeProvider>
         </>
     )
 }
