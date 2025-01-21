@@ -9,6 +9,9 @@ const Main = () => {
     <NewsMain newsItems={newsItems}>
       {loading && <News.Loading />}
       {error && <News.Error>{error.message}</News.Error>}
+      {newsItems && newsItems.length !== 0 && (
+        <News.Items NewsData={newsItems.articles} />
+      )}
     </NewsMain>
   );
 };
