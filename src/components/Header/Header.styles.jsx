@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -7,17 +8,15 @@ export const HeaderContainer = styled.header`
   align-items: center;
   display: flex;
   justify-content: space-between;
+`;
 
-  a {
-    color: ${({ theme }) => theme.text};
-    &:hover {
-      color: ${({ theme }) => theme.primary};
-      border-bottom: 0.2rem solid ${({ theme }) => theme.primary};
-    }
+export const StyledNavLink = styled(NavLink)`
+  &.active {
+    color: ${({ theme }) => theme.primary};
+    border-bottom: 0.2rem solid ${({ theme }) => theme.primary};
+  }
 
-    &:focus {
-      color: ${({ theme }) => theme.primary};
-      border-bottom: 0.2rem solid ${({ theme }) => theme.primary};
-    }
+  h3 {
+    text-transform: capitalize;
   }
 `;
