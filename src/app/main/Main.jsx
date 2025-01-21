@@ -1,26 +1,16 @@
 import NewsItems from '../../components/News/NewsItems/NewsItems';
 import { MainLayout } from './Main.styles';
 import useGetNewsItems from '../../hooks/News/useGetNewsItems';
-import useGetAllArticles from '../../hooks/News/useGetAllArticles';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const Main = () => {
-  const { category } = useParams();
-
   const {
     newsItems,
     loading: newsLoading,
     error: newsError,
   } = useGetNewsItems();
 
-  const {
-    allArticles,
-    loading: allLoading,
-    error: allError,
-  } = useGetAllArticles();
-
-  if (newsLoading || allLoading) {
+  if (newsLoading) {
     return (
       <MainLayout>
         <h3>Loading News...</h3>
@@ -28,7 +18,7 @@ const Main = () => {
     );
   }
 
-  if (newsError || allError) {
+  if (newsError) {
     return (
       <MainLayout>
         <h3>Error</h3>
@@ -36,10 +26,7 @@ const Main = () => {
     );
   }
 
-  const displayedArticles =
-    category === 'all' ? allArticles.articles : newsItems.articles;
-
-  if (!displayedArticles || displayedArticles.length === 0) {
+  if (!newsItems || newsItems.length === 0) {
     return (
       <MainLayout>
         <h3>No articles available.</h3>
@@ -49,7 +36,7 @@ const Main = () => {
 
   return (
     <MainLayout>
-      <NewsItems NewsData={displayedArticles} />
+      <NewsItems NewsData={newsItems.articles} />
     </MainLayout>
   );
 };
