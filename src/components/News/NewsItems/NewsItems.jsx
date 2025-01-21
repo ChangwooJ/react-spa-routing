@@ -2,6 +2,7 @@ import NewsCard from '../NewsCard/NewsCard';
 import { NewsItemsContainer } from './NewsItmes.styled';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 const NewsItems = ({ NewsData }) => {
   const { category } = useParams();
@@ -25,3 +26,7 @@ const NewsItems = ({ NewsData }) => {
 };
 
 export default NewsItems;
+
+NewsItems.propTypes = {
+  NewsData: PropTypes.array,
+};

@@ -1,5 +1,6 @@
 import { NewsImageContainer } from './NewsImage.styles';
 import NewsImageSkeleton from './NewsImageSkeleton';
+import PropTypes from 'prop-types';
 
 const NewsImage = ({ imageUrl }) => {
   return (
@@ -14,3 +15,7 @@ const NewsImage = ({ imageUrl }) => {
 };
 
 export default NewsImage;
+
+NewsImage.propTypes = {
+  imageUrl: PropTypes.string,
+};

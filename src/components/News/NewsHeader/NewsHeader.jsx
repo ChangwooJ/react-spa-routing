@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { NewsHeaderContainer } from './NewsHeader.styles';
 import useDarkmode from '../../../hooks/useDarkmode';
+import PropTypes from 'prop-types';
 
 const NewsHeader = ({ newsContent }) => {
   const { theme } = useDarkmode();
@@ -17,3 +18,7 @@ const NewsHeader = ({ newsContent }) => {
 };
 
 export default NewsHeader;
+
+NewsHeader.propTypes = {
+  newsContent: PropTypes.object,
+};
