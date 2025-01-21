@@ -12,23 +12,13 @@ const Main = () => {
     newsItems,
     loading: newsLoading,
     error: newsError,
-    refetch: newsRefetch,
   } = useGetNewsItems();
 
   const {
     allArticles,
     loading: allLoading,
     error: allError,
-    refetch: allRefetch,
   } = useGetAllArticles();
-
-  useEffect(() => {
-    if (category === 'all') {
-      allRefetch();
-    } else {
-      newsRefetch();
-    }
-  }, []);
 
   if (newsLoading || allLoading) {
     return (

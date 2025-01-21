@@ -11,14 +11,12 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalStyle theme={theme} />
-      <Suspense fallback={<div>...loading</div>}>
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/:category" element={<Main />}></Route>
-          </Routes>
-        </main>
-      </Suspense>
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/:category" element={<Main />}></Route>
+        </Routes>
+      </main>
     </BrowserRouter>
   );
 }

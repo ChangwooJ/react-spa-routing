@@ -10,7 +10,6 @@ const useGetAllArticles = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [allArticles, setAllArticles] = useState([]);
-  const [isRefetch, setIsRefetch] = useState(false);
 
   useEffect(() => {
     const getAllArticles = async () => {
@@ -36,11 +35,7 @@ const useGetAllArticles = () => {
     }
   }, [category]);
 
-  const refetch = () => {
-    setIsRefetch(!isRefetch);
-  };
-
-  return { allArticles, refetch, loading, error };
+  return { allArticles, loading, error };
 };
 
 export default useGetAllArticles;

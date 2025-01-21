@@ -10,7 +10,6 @@ const useGetNewsItems = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [newsItems, setNewsItems] = useState([]);
-  const [isRefetch, setIsRefetch] = useState(false);
 
   useEffect(() => {
     const getNewsItems = async () => {
@@ -36,11 +35,7 @@ const useGetNewsItems = () => {
     }
   }, [category]);
 
-  const refetch = () => {
-    setIsRefetch(!isRefetch);
-  };
-
-  return { newsItems, refetch, loading, error };
+  return { newsItems, loading, error };
 };
 
 export default useGetNewsItems;
