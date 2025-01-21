@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <NewsMain newsItems={newsItems}>
       {loading && <News.Loading />}
-      {error && <News.Error>{error.Message}</News.Error>}
+      {error && <News.Error>{error.message}</News.Error>}
     </NewsMain>
   );
 };
