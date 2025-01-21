@@ -1,4 +1,5 @@
-import { NewsImageContainer, NewsImageSkeleton } from './NewsImage.styles';
+import { NewsImageContainer } from './NewsImage.styles';
+import NewsImageSkeleton from './NewsImageSkeleton';
 
 const NewsImage = ({ imageUrl }) => {
   return (
@@ -6,7 +7,7 @@ const NewsImage = ({ imageUrl }) => {
       {imageUrl ? (
         <img src={imageUrl} width={200} height={150} alt="news" />
       ) : (
-        <NewsImageSkeleton />
+        <NewsImageSkeleton>No Image</NewsImageSkeleton>
       )}
     </NewsImageContainer>
   );

@@ -6,8 +6,12 @@ export const NewsImageContainer = styled.div`
   align-items: center;
 `;
 
-export const NewsImageSkeleton = styled.div`
+export const StyledNewsImageSkeleton = styled.div`
   width: 200px;
   height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #d1d5db;
+  color: #9ca3af;
 `;
