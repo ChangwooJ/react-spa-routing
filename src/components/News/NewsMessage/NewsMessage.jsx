@@ -4,6 +4,5 @@ const NewsMessage = ({ children }) => {
 
 const LoadingMessage = () => <NewsMessage>Loading...</NewsMessage>;
 const ErrorMessage = ({ children }) => <NewsMessage>{children}</NewsMessage>;
-const NoArticlesMessage = () => <NewsMessage>No articles found...</NewsMessage>;
 
-export { LoadingMessage, ErrorMessage, NoArticlesMessage };
+export { LoadingMessage, ErrorMessage };
