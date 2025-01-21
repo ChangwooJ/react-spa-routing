@@ -1,5 +1,4 @@
-import { Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Main from './app/main/Main';
 import { GlobalStyle } from './theme/GlobalStyles';
 import useDarkmode from './hooks/useDarkmode';
@@ -14,6 +13,7 @@ function App() {
       <Header />
       <main>
         <Routes>
+          <Route path="/" element={<Navigate to="/all" />} />
           <Route path="/:category" element={<Main />}></Route>
         </Routes>
       </main>
