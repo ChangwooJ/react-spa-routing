@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Main from './app/main/Main';
 import { GlobalStyle } from './theme/GlobalStyles';
 import useDarkmode from './hooks/useDarkmode';
 import Header from './components/Header/Header';
+import Main from './app/main/Main';
 
 function App() {
   const { theme } = useDarkmode();
