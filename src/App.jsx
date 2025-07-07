@@ -1,12 +1,18 @@
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./layout/Layout";
 
 function App() {
 
   return (
-    <>
-      <h1>그리디 미션 : 뉴스 웹 뷰어 시이작!</h1>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          
+        </Route>
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
