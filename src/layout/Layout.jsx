@@ -6,7 +6,7 @@ import Search from "./components/Search";
 const Layout = () => {
   return (
     <div className="h-screen w-full">
-      <header className="w-full h-fit p-5">
+      <header className="w-full h-fit p-5 border-b-2">
         <div className="text-2xl font-semibold mb-4">NewsViewer</div>
         <div className="w-full flex">
           <Search />
