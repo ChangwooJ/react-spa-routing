@@ -14,7 +14,6 @@ export const fetchCategoryNews = async (category, currentPage, searchKeyword) =>
   if (category) {
     url = `/top-headlines?category=${category}&pageSize=15&page=${currentPage}&q=${searchKeyword}&apiKey=${apiKey}`;
   }
-  console.log("API 호출 URL:", url);
   const response = await instance.get(url);
   return response;
 };

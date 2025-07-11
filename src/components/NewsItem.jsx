@@ -1,13 +1,17 @@
+import { useState } from "react";
 import noImg from "../assets/no-img.svg";
 
 const NewsItem = ({ news }) => {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <>
-      <div className="w-[350px] h-full">
+      <div className="w-[350px] h-[200px] rounded-lg">
         <img
-          src={news.urlToImage || noImg}
+          src={!imgError && news.urlToImage ? news.urlToImage : noImg}
           alt={news.title}
-          className="rounded-lg w-full h-full object-cover"
+          onError={() => setImgError(true)}
+          className="w-full h-full object-cover"
         />
       </div>
       <div className="flex flex-col gap-2 flex-1">

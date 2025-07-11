@@ -15,7 +15,7 @@ const NewsList = () => {
   
   const currentPage = parseInt(searchParams.get('page')) || 1;
   const searchKeyword = searchParams.get('q') || '';
-
+console.log(newsList);
   useEffect(() => {
     const getNews = async () => {
       setLoading(true);
