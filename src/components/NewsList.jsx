@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useParams, useSearchParams } from "react-router-dom";
 import { fetchCategoryNews } from "../apis/api";
 import NewsItem from "./NewsItem";
@@ -9,31 +9,24 @@ const ITEM_PER_PAGE = 15;
 const NewsList = () => {
   const { category } = useParams();
   const [searchParams] = useSearchParams();
-  const [newsList, setNewsList] = useState([]);
-  const [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(true);
   
   const currentPage = parseInt(searchParams.get('page')) || 1;
   const searchKeyword = searchParams.get('q') || '';
 
-  useEffect(() => {
-    const getNews = async () => {
-      setLoading(true);
-      try {
-        const { data } = await fetchCategoryNews(category || null, currentPage, searchKeyword);
-        setNewsList(data.articles);
-        setPage(Math.ceil(data.totalResults / ITEM_PER_PAGE));
-      } catch (error) {
-        console.error(error);
-      }
-      setLoading(false);
-    };
-    getNews();
-  }, [category, currentPage, searchKeyword]);
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['news', category, currentPage, searchKeyword],
+    queryFn: () => fetchCategoryNews(category || null, currentPage, searchKeyword),
+  });
 
-  if (loading) {
+  if (isLoading) {
     return null;
   }
+  if (isError) {
+    return <div>에러가 발생했습니다.</div>;
+  }
+
+  const newsList = data.data.articles || [];
+  const page = Math.ceil((data.data.totalResults || 0) / ITEM_PER_PAGE);
 
   return (
     <div className="px-10 py-5 w-full flex flex-col">
