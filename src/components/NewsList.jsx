@@ -10,8 +10,8 @@ const NewsList = () => {
   const { category } = useParams();
   const [searchParams] = useSearchParams();
   const [newsList, setNewsList] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(true);
   
   const currentPage = parseInt(searchParams.get('page')) || 1;
   const searchKeyword = searchParams.get('q') || '';
@@ -31,14 +31,20 @@ const NewsList = () => {
     getNews();
   }, [category, currentPage, searchKeyword]);
 
-  if (loading) return <div>로딩중...</div>;
+  if (loading) {
+    return null;
+  }
 
   return (
-    <div className="px-10 py-5">
+    <div className="px-10 py-5 w-full flex flex-col">
       {newsList.map((news, idx) => (
-        <div key={`${news.publishedAt}-${idx}`}>
+        <a
+          key={`${news.publishedAt}-${idx}`}
+          href={news.url}
+          className="border w-full flex h-60 gap-4 px-4 py-2 mb-2 hover:bg-gray-200 transition-colors rounded-lg"
+        >
           <NewsItem news={news} />
-        </div>
+        </a>
       ))}
       <Pagination page={page} />
     </div>

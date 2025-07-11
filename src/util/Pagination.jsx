@@ -18,7 +18,7 @@ const Pagination = ({ page }) => {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mt-6">
       <span
         className={`cursor-pointer px-2 py-1 mx-1 rounded-lg bg-gray-100 ${
           currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
@@ -33,8 +33,8 @@ const Pagination = ({ page }) => {
           <span
             key={index + 1}
             onClick={() => navigate(`${basePath}?page=${index + 1}`)}
-            className={`cursor-pointer px-2 py-1 mx-1.5 rounded-full ${
-              currentPage === index + 1 ? "bg-black text-white" : ""
+            className={`flex items-center cursor-pointer mx-3 ${
+              currentPage === index + 1 ? "font-extrabold" : ""
             }`}
           >
             {index + 1}
