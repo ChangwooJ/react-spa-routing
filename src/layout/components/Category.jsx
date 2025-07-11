@@ -20,9 +20,9 @@ const Category = () => {
       {NEWS_CATEGORIES.map((newsCategory) => (
         <div
           key={newsCategory}
-          className={`px-2 py-1 cursor-pointer border-b-4 border-transparent hover:border-b-black hover:text-black transition-colors  ${
+          className={`px-2 py-1 cursor-pointer border-b-4 border-transparent hover:border-b-black dark:hover:border-b-white hover:text-black dark:text-white transition-colors  ${
             newsCategory === (category || "all")
-              ? "border-b-4 border-b-black font-semibold"
+              ? "border-b-4 border-b-black dark:border-b-white font-semibold"
               : ""
           }`}
           onClick={() =>

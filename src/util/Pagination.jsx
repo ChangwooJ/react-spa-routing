@@ -20,7 +20,7 @@ const Pagination = ({ page }) => {
   return (
     <div className="flex justify-center mt-6">
       <span
-        className={`cursor-pointer px-2 py-1 mx-1 rounded-lg bg-gray-100 ${
+        className={`cursor-pointer px-2 py-1 mx-1 rounded-lg bg-gray-100 font-extrabold hover:bg-gray-200 dark:text-black ${
           currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
         }`}
         onClick={() => handlePage(-1)}
@@ -42,7 +42,7 @@ const Pagination = ({ page }) => {
         );
       })}
       <span
-        className={`cursor-pointer px-2 py-1 mx-1 rounded-lg bg-gray-100 ${
+        className={`cursor-pointer px-2 py-1 mx-1 rounded-lg bg-gray-100 font-extrabold hover:bg-gray-200 dark:text-black ${
           currentPage === page ? "opacity-50 cursor-not-allowed" : ""
         }`}
         onClick={() => handlePage(1)}

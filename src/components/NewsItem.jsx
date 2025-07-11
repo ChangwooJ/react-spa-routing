@@ -1,14 +1,23 @@
 import { useState } from "react";
 import noImg from "../assets/no-img.svg";
+import whiteNoImg from "../assets/white_no_img.svg";
+import useDarkModeStore from "../store/useDarkModeStore";
 
 const NewsItem = ({ news }) => {
   const [imgError, setImgError] = useState(false);
+  const isDark = useDarkModeStore((state) => state.isDark);
 
   return (
     <>
       <div className="w-[350px] h-[200px] rounded-lg">
         <img
-          src={!imgError && news.urlToImage ? news.urlToImage : noImg}
+          src={
+            !imgError && news.urlToImage
+              ? news.urlToImage
+              : isDark
+                ? whiteNoImg
+                : noImg
+          }
           alt={news.title}
           onError={() => setImgError(true)}
           className="w-full h-full object-cover"

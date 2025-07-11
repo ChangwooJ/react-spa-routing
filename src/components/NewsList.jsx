@@ -15,7 +15,7 @@ const NewsList = () => {
   
   const currentPage = parseInt(searchParams.get('page')) || 1;
   const searchKeyword = searchParams.get('q') || '';
-console.log(newsList);
+
   useEffect(() => {
     const getNews = async () => {
       setLoading(true);
@@ -41,7 +41,7 @@ console.log(newsList);
         <a
           key={`${news.publishedAt}-${idx}`}
           href={news.url}
-          className="border w-full flex h-60 gap-4 px-4 py-2 mb-2 hover:bg-gray-200 transition-colors rounded-lg"
+          className="border w-full flex h-60 gap-4 px-4 py-2 mb-2 hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors rounded-lg"
         >
           <NewsItem news={news} />
         </a>
