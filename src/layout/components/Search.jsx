@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import searchIcon from "../../assets/searchIcon.svg";
 
 const Search = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="w-[50%] flex items-center">
       <input

@@ -5,7 +5,7 @@ const apiKey = import.meta.env.VITE_API_KEY;
 const instance = axios.create({
   baseURL: `https://newsapi.org/v2`,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
@@ -14,7 +14,7 @@ export const fetchCategoryNews = async (category, currentPage) => {
   if (category) {
     url = `/top-headlines?category=${category}&pageSize=15&page=${currentPage}&apiKey=${apiKey}`;
   }
-  // console.log(url);
+  console.log("API 호출 URL:", url);
   const response = await instance.get(url);
   return response;
 };

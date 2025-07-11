@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { fetchCategoryNews } from "../apis/api";
 import NewsItem from "./NewsItem";
 import Pagination from "../util/Pagination";
@@ -8,17 +8,18 @@ const ITEM_PER_PAGE = 15;
 
 const NewsList = () => {
   const { category } = useParams();
+  const [searchParams] = useSearchParams();
   const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  console.log(page);
-  console.log(newsList);
+  
+  const currentPage = parseInt(searchParams.get('page')) || 1;
+  
   useEffect(() => {
     const getNews = async () => {
       setLoading(true);
       try {
-        const { data } = await fetchCategoryNews(category, currentPage);
+        const { data } = await fetchCategoryNews(category || null, currentPage);
         setNewsList(data.articles);
         setPage(Math.ceil(data.totalResults / ITEM_PER_PAGE));
       } catch (error) {
@@ -38,7 +39,7 @@ const NewsList = () => {
           <NewsItem news={news} />
         </div>
       ))}
-      <Pagination page={page} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Pagination page={page} />
     </div>
   );
 };

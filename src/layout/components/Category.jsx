@@ -25,7 +25,9 @@ const Category = () => {
               ? "bg-black text-white font-semibold"
               : ""
           }`}
-          onClick={() => navigate(newsCategory === "all" ? "/" : `/${newsCategory}`)}
+          onClick={() =>
+            navigate(newsCategory === "all" ? "/" : `/${newsCategory}`)
+          }
         >
           {newsCategory}
         </div>
