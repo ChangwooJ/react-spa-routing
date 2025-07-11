@@ -1,23 +1,30 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Category from "./components/Category";
 import Search from "./components/Search";
 
-
 const Layout = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="h-screen w-full">
-      <header className="w-full h-fit p-5 border-b-2">
-        <div className="text-2xl font-semibold mb-4">NewsViewer</div>
+    <div className="h-screen w-full ">
+      <header className="fixed z-10 left-[10%] right-[10%] top-0 h-[130px] p-5 border-b-2 bg-white cursor-pointer">
+        <div
+          className="text-2xl font-semibold mb-4"
+          onClick={() => navigate("/")}
+        >
+          NewsViewer
+        </div>
         <div className="w-full flex">
           <Search />
           <Category />
         </div>
       </header>
+      <div className="h-[130px]" />
       <main className="relative flex-1 min-h-0 overflow-y-auto">
         <Outlet />
       </main>
     </div>
-  )
-}
+  );
+};
 
 export default Layout;

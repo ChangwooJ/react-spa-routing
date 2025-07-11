@@ -9,7 +9,12 @@ const instance = axios.create({
   },
 });
 
-export const fetchAllNews = async () => {
-  const response = await instance.get(`/everything?q=apple&from=2025-07-06&to=2025-07-06&sortBy=popularity&apiKey=${apiKey}`);
+export const fetchCategoryNews = async (category, currentPage) => {
+  let url = `/top-headlines?country=us&pageSize=15&page=${currentPage}&apiKey=${apiKey}`;
+  if (category) {
+    url = `/top-headlines?category=${category}&pageSize=15&page=${currentPage}&apiKey=${apiKey}`;
+  }
+  // console.log(url);
+  const response = await instance.get(url);
   return response;
-}
+};
