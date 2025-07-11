@@ -3,9 +3,9 @@
 const Pagination = ({ page, currentPage, setCurrentPage }) => {
 
   const handlePage = (controlNum) => {
-    if (controlNum < 0 && currentPage === 1) {
+    if (controlNum < 0 && currentPage !== 1) {
       setCurrentPage(currentPage - 1);
-    } else if (controlNum > 0 && currentPage < pages) {
+    } else if (controlNum > 0 && currentPage < page) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -13,7 +13,9 @@ const Pagination = ({ page, currentPage, setCurrentPage }) => {
   return (
     <div className="flex justify-center">
       <span 
-        className="cursor-pointer px-2 py-1 mx-1 rounded-lg bg-gray-100"
+        className={`cursor-pointer px-2 py-1 mx-1 rounded-lg bg-gray-100 ${
+          currentPage === 1 ? 'disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-white' : ''
+        }`}
         onClick={() => handlePage(-1)}
       >
         {"<"}
@@ -30,7 +32,9 @@ const Pagination = ({ page, currentPage, setCurrentPage }) => {
         </span>
       ))}
       <span 
-        className="cursor-pointer px-2 py-1 mx-1 rounded-lg bg-gray-100"
+        className={`cursor-pointer px-2 py-1 mx-1 rounded-lg bg-gray-100 ${
+          currentPage === page ? 'disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-white' : ''
+        }`}
         onClick={() => handlePage(1)}
       >
         {">"}
