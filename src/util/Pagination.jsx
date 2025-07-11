@@ -6,13 +6,14 @@ const Pagination = ({ page }) => {
   const navigate = useNavigate();
 
   const currentPage = parseInt(searchParams.get("page")) || 1;
+  const searchKeyword = searchParams.get("q") || '';
 
   const handlePage = (controlNum) => {
     const basePath = category ? `/${category}` : "/";
     if (controlNum < 0 && currentPage !== 1) {
-      navigate(`${basePath}?page=${currentPage - 1}`);
+      navigate(`${basePath}?page=${currentPage - 1}&q=${searchKeyword}`);
     } else if (controlNum > 0 && currentPage < page) {
-      navigate(`${basePath}?page=${currentPage + 1}`);
+      navigate(`${basePath}?page=${currentPage + 1}&q=${searchKeyword}`);
     }
   };
 

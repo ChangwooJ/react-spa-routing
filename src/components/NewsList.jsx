@@ -14,12 +14,13 @@ const NewsList = () => {
   const [page, setPage] = useState(0);
   
   const currentPage = parseInt(searchParams.get('page')) || 1;
-  
+  const searchKeyword = searchParams.get('q') || '';
+
   useEffect(() => {
     const getNews = async () => {
       setLoading(true);
       try {
-        const { data } = await fetchCategoryNews(category || null, currentPage);
+        const { data } = await fetchCategoryNews(category || null, currentPage, searchKeyword);
         setNewsList(data.articles);
         setPage(Math.ceil(data.totalResults / ITEM_PER_PAGE));
       } catch (error) {
@@ -28,7 +29,7 @@ const NewsList = () => {
       setLoading(false);
     };
     getNews();
-  }, [category, currentPage]);
+  }, [category, currentPage, searchKeyword]);
 
   if (loading) return <div>로딩중...</div>;
 

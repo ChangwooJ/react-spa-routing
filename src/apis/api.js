@@ -9,10 +9,10 @@ const instance = axios.create({
   },
 });
 
-export const fetchCategoryNews = async (category, currentPage) => {
-  let url = `/top-headlines?country=us&pageSize=15&page=${currentPage}&apiKey=${apiKey}`;
+export const fetchCategoryNews = async (category, currentPage, searchKeyword) => {
+  let url = `/top-headlines?country=us&pageSize=15&page=${currentPage}&q=${searchKeyword}&apiKey=${apiKey}`;
   if (category) {
-    url = `/top-headlines?category=${category}&pageSize=15&page=${currentPage}&apiKey=${apiKey}`;
+    url = `/top-headlines?category=${category}&pageSize=15&page=${currentPage}&q=${searchKeyword}&apiKey=${apiKey}`;
   }
   console.log("API 호출 URL:", url);
   const response = await instance.get(url);
