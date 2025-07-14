@@ -1,7 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import Category from "./components/Category";
 import Search from "./components/Search";
-import DarkModeToggle from "../components/DarkModeToggle";
+import DarkModeToggleButton from "../components/DarkModeToggleButton";
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Layout = () => {
           onClick={() => navigate("/")}
         >
           <span>NewsViewer</span>
-          <DarkModeToggle />
+          <DarkModeToggleButton />
         </div>
         <div className="w-full flex">
           <Search />

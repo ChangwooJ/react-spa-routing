@@ -1,7 +1,7 @@
 import useDarkModeStore from "../store/useDarkModeStore";
 import bulb from "../assets/bulb.svg";
 
-const DarkModeToggle = () => {
+const DarkModeToggleButton = () => {
   const { toggleDark } = useDarkModeStore();
 
   return (
@@ -11,4 +11,4 @@ const DarkModeToggle = () => {
   );
 };
 
-export default DarkModeToggle;
+export default DarkModeToggleButton;

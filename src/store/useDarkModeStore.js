@@ -1,28 +1,26 @@
 import { create } from "zustand";
 
+const applyTheme = (isDark) => {
+  if (isDark) {
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.documentElement.classList.add("light");
+    localStorage.setItem("theme", "light");
+  }
+}
+
 const useDarkModeStore = create((set) => ({
   isDark: localStorage.getItem("theme") === "dark",
   toggleDark: () =>
     set((state) => {
       const newTheme = !state.isDark;
-      if (newTheme) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
+      applyTheme(newTheme);
       return { isDark: newTheme };
     }),
   setDark: (value) =>
     set(() => {
-      if (value) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
+      applyTheme(value);
       return { isDark: value };
     }),
 }));
