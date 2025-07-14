@@ -10,10 +10,17 @@ const instance = axios.create({
 });
 
 export const fetchCategoryNews = async (category, currentPage, searchKeyword) => {
-  let url = `/top-headlines?country=us&pageSize=15&page=${currentPage}&q=${searchKeyword}&apiKey=${apiKey}`;
-  if (category) {
-    url = `/top-headlines?category=${category}&pageSize=15&page=${currentPage}&q=${searchKeyword}&apiKey=${apiKey}`;
-  }
+  const params = new URLSearchParams({
+    country: 'us',
+    pageSize: '15',
+    page: currentPage,
+    apiKey: apiKey,
+    ...(searchKeyword && {q: searchKeyword}),
+    ...(category && {category: category}),
+  });
+
+  const url = `/top-headlines?${params.toString()}`;
+
   const response = await instance.get(url);
   return response;
 };
