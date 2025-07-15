@@ -10,11 +10,11 @@ const Search = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
   const currentPage = parseInt(searchParams.get("page")) || 1;
-  const searchKeyword = searchParams.get("q") || '';
+  const searchKeyword = searchParams.get("q") || "";
   const isDark = useDarkModeStore((state) => state.isDark);
 
   useEffect(() => {
-    if(searchKeyword == '') {
+    if (searchKeyword == "") {
       setInput("");
     }
   }, [searchKeyword]);
@@ -31,6 +31,10 @@ const Search = () => {
 
   const handleSearch = () => {
     const basePath = category ? `/${category}` : "/";
+    if (!input.trim()) {
+      navigate(`${basePath}`);
+      return;
+    }
     navigate(`${basePath}?page=${currentPage}&q=${input}`);
   };
 
@@ -42,7 +46,7 @@ const Search = () => {
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         placeholder="궁금한 뉴스를 검색해보세요."
-        className="w-[80%] h-full py-2 px-4 rounded-2xl border bg-slate-50 mr-2"
+        className="w-[80%] h-full py-2 px-4 rounded-2xl border bg-slate-50 mr-2 dark:text-black"
       />
       <img
         src={isDark ? whiteSearchIcon : searchIcon}

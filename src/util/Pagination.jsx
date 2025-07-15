@@ -41,14 +41,14 @@ const Pagination = ({ page }) => {
           </span>
         );
       })}
-      <span
+      <button
         className={`cursor-pointer px-2 py-1 mx-1 rounded-lg bg-gray-100 font-extrabold hover:bg-gray-200 dark:text-black ${
           currentPage === page ? "opacity-50 cursor-not-allowed" : ""
         }`}
         onClick={() => handlePage(1)}
       >
         {">"}
-      </span>
+      </button>
     </div>
   );
 };

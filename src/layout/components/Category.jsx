@@ -16,7 +16,7 @@ const Category = () => {
   const { category } = useParams();
 
   return (
-    <div className="w-[50%] flex items-center gap-1 mr-4">
+    <div className="w-[50%] flex items-center gap-1 mr-4 overflow-x-auto scrollbar-hide">
       {NEWS_CATEGORIES.map((newsCategory) => (
         <div
           key={newsCategory}

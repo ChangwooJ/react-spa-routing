@@ -16,13 +16,13 @@ const Layout = () => {
           <span>NewsViewer</span>
           <DarkModeToggleButton />
         </div>
-        <div className="w-full flex">
+        <div className="w-full flex justify-between">
           <Search />
           <Category />
         </div>
       </header>
       <div className="h-[130px]" />
-      <main className="relative flex-1 min-h-0 overflow-y-auto">
+      <main className="relative flex-1 min-h-0 overflow-y-auto scrollbar-hide">
         <Outlet />
       </main>
     </div>

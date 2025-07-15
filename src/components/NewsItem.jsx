@@ -9,7 +9,7 @@ const NewsItem = ({ news }) => {
 
   return (
     <>
-      <div className="w-[350px] h-[200px] rounded-lg">
+      <div className="w-[25%] h-[100%] rounded-lg">
         <img
           src={
             !imgError && news.urlToImage
@@ -24,10 +24,10 @@ const NewsItem = ({ news }) => {
         />
       </div>
       <div className="flex flex-col gap-2 flex-1">
-        <h2 className="h-[35%] p-1 border-b text-xl font-bold hover:underline line-clamp-2">
+        <h2 className="min-h-[30%] h-fit p-1 border-b text-xl font-bold hover:underline line-clamp-2">
           {news.title}
         </h2>
-        <p className="p-1">{news.content}</p>
+        <p className="p-1 line-clamp-6">{news.content}</p>
       </div>
     </>
   );
